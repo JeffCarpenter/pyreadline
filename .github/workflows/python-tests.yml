@@ -31,5 +31,6 @@ jobs:
       shell: powershell
       
     - name: Test import pyreadline
-      run: python -c "import pyreadline; Write-Output 'pyreadline imported successfully'"
+      run: |
+        python -c "import pyreadline; print('pyreadline imported successfully')"
       shell: powershell
