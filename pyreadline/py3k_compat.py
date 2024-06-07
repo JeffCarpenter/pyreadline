@@ -3,6 +3,7 @@ import sys
 
 if sys.version_info[0] >= 3:
     import collections
+    collections.Callable = collections.abc.Callable
     PY3 = True
     def callable(x):
         return isinstance(x, collections.Callable)
