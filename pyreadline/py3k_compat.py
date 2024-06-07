@@ -1,26 +1,32 @@
 from __future__ import print_function, unicode_literals, absolute_import
 import sys
 
-if sys.version_info[0] >= 3:
-    import collections
-    PY3 = True
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+
+PY3 = sys.version_info[0] >= 3
+
+if PY3:
+    try:
+        from collections.abc import Callable
+    except ImportError:
+        from collections import Callable
+
     def callable(x):
-        return isinstance(x, collections.Callable)
+        return isinstance(x, Callable)
     
     def execfile(fname, glob, loc=None):
-        loc = loc if (loc is not None) else glob
+        loc = glob if loc is None else loc
         with open(fname) as fil:
             txt = fil.read()
         exec(compile(txt, fname, 'exec'), glob, loc)
-
+    
     unicode = str
     bytes = bytes
-    from io import StringIO
 else:
-    PY3 = False
     callable = callable
     execfile = execfile
     bytes = str
     unicode = unicode
-    
-    from StringIO import StringIO
