@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "pyreadline"
+version = "2.2.1"
+description = "A python implementation of GNU readline functionality, based on the ctypes-based UNC readline package by Gary Bishop"
+homepage = "https://ipython.org/pyreadline"
+repository = "https://github.com/djstompzone/pyreadline"
+authors = [
+    "Jörgen Stenarson <jorgen.stenarson@bostream.nu>",
+    "Gary Bishop <gb@cs.unc.edu>",
+    "Jack Trainor <unknown@unknown.com>",
+    "Takayuki Shimizukawa <shimizukawa@gmail.com>",
+    "DJ Magar <admin@stomp.zone>",
+]
+maintainers = [
+     "DJ Magar <admin@stomp.zone>",
+     "Jörgen Stenarson <jorgen.stenarson@bostream.nu>"
+]
+license = "BSD-3-Clause"
+readme = ["README.rst", "doc/README.txt"]
+classifiers = [
+    "Development Status :: 6 - Mature",
+    "Environment :: Console",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Terminals",
+    "Topic :: Utilities"
+]
+
+[tool.poetry.dependencies]
+python = ">=2.7,<4.0"
+pywin32 = "^308"
+
+[tool.poetry.dev-dependencies]
+sphinx = "^5.0" 
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
