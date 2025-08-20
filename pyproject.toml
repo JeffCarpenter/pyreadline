@@ -28,7 +28,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=2.7,<4.0"
+python = ">=3.7,<4.0"
 pywin32 = "^308"
 
 [tool.poetry.dev-dependencies]
