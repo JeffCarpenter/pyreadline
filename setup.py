@@ -11,7 +11,7 @@
 import os
 import sys
 import glob
-from distutils.core import setup
+from setuptools import setup
 from platform import system
 
 _S = system()
@@ -55,6 +55,9 @@ setup(name=name,
       packages         = packages,
       package_data     = {'pyreadline':['configuration/*']},
       data_files       = [],
-      cmdclass = cmd_class
+      cmdclass         = cmd_class,
+      install_requires = ['pywin32>=311'],
+      extras_require   = {'docs': ['sphinx>=8.2.3']},
+      python_requires  = '>=3.9'
       )
 

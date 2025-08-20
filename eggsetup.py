@@ -29,5 +29,8 @@ setup(name=name,
       data_files       = [('doc', glob.glob("doc/*")),
                          ],
       zip_safe         = False,
+      install_requires = ['pywin32>=311'],
+      extras_require   = {'docs': ['sphinx>=8.2.3']},
+      python_requires  = '>=3.9',
       )
 

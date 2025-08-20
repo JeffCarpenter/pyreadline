@@ -7,7 +7,7 @@ The pyreadline package is a python implementation of GNU readline functionality
 it is based on the ctypes based UNC readline package by Gary Bishop. 
 It is not complete. It has been tested for use with windows 2000 and windows xp.
 
-Version 2.0 runs on Python 2.6, 2.7, and >3.2 using the same code.
+Version 2.2 requires Python 3.9 or later.
 
 Features:
  *  keyboard text selection and copy/paste
