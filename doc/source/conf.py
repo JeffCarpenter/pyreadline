@@ -11,7 +11,15 @@
 # All configuration values have a default value; values that are commented out
 # serve to show the default value.
 
-import sys, os, pyreadline.release
+import os
+import tomllib
+
+# Determine project version from pyproject.toml without importing the package,
+# which raises errors on non-Windows platforms.
+_project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+with open(os.path.join(_project_root, "pyproject.toml"), "rb") as _f:
+    _metadata = tomllib.load(_f)["tool"]["poetry"]
+
 
 # If your extensions are in another directory, add it here. If the directory
 # is relative to the documentation root, use os.path.abspath to make it
@@ -42,9 +50,9 @@ copyright = '2008, J. Stenarson'
 # other places throughout the built documents.
 #
 # The short X.Y version.
-version = pyreadline.release.version.rsplit(".",1)[0]
+version = _metadata["version"].rsplit(".", 1)[0]
 # The full version, including alpha/beta/rc tags.
-release = pyreadline.release.version
+release = _metadata["version"]
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
