@@ -29,7 +29,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
-pywin32 = ">=311"
+pywin32 = "^311"
 
 [tool.poetry.dev-dependencies]
 sphinx = ">=8.2.3"
