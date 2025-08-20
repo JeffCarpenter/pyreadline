@@ -25,9 +25,9 @@
      "Topic :: Terminals",
      "Topic :: Utilities"
  ]
- dependencies = [
-     "pywin32^308",
- ]
+dependencies = [
+    "pywin32>=308,<309",
+]
 
  [project.urls]
  Homepage = "https://ipython.org/pyreadline"
@@ -35,8 +35,8 @@
 
  [tool.poetry.group.dev.dependencies]
  # Sphinx 8.2 adds support for upcoming Python 3.13 releases
- sphinx = ">=8.2.3"
- tomli = {version = "^2.0", python = "<3.11"}
+sphinx = ">=8.2.3"
+tomli = {version = ">=2.0,<3", python = "<3.11"}
 
 [build-system]
 requires = ["poetry-core"]
