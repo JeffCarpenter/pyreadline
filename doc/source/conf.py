@@ -12,13 +12,28 @@
 # serve to show the default value.
 
 import os
-import tomllib
+import warnings
+
+try:  # Python 3.11+
+    import tomllib  # type: ignore
+except Exception:  # pragma: no cover - Python <3.11
+    try:
+        import tomli as tomllib  # type: ignore
+    except Exception:  # pragma: no cover - tomli missing
+        tomllib = None  # type: ignore
 
 # Determine project version from pyproject.toml without importing the package,
 # which raises errors on non-Windows platforms.
 _project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-with open(os.path.join(_project_root, "pyproject.toml"), "rb") as _f:
-    _metadata = tomllib.load(_f)["tool"]["poetry"]
+_metadata = {}
+if tomllib is not None:
+    try:
+        with open(os.path.join(_project_root, "pyproject.toml"), "rb") as _f:
+            _pyproject = tomllib.load(_f)
+        _metadata = _pyproject.get("tool", {}).get("poetry", {})
+    except Exception as exc:  # pragma: no cover - pyproject missing/malformed
+        warnings.warn("Unable to load project metadata: %s" % exc)
+
 
 
 # If your extensions are in another directory, add it here. If the directory
@@ -50,9 +65,10 @@ copyright = '2008, J. Stenarson'
 # other places throughout the built documents.
 #
 # The short X.Y version.
-version = _metadata["version"].rsplit(".", 1)[0]
+_version = _metadata.get("version", "0.0.0")
+version = _version.rsplit(".", 1)[0]
 # The full version, including alpha/beta/rc tags.
-release = _metadata["version"]
+release = _version
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
