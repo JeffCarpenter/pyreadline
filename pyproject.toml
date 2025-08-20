@@ -3,7 +3,7 @@
  version = "2.2.1"
  description = "A python implementation of GNU readline functionality, based on the ctypes-based UNC readline package by Gary Bishop"
  readme = "README.rst"
- requires-python = ">=2.7,<4.0"
+requires-python = ">=3.9,<4.0"
  license = {text = "BSD-3-Clause"}
  authors = [
      {name = "Jörgen Stenarson", email = "jorgen.stenarson@bostream.nu"},
