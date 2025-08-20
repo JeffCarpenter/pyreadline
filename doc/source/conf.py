@@ -18,7 +18,7 @@ try:  # Python 3.11+
     import tomllib  # type: ignore
 except Exception:  # pragma: no cover - Python <3.11
     try:
-        import tomli as tomllib  # type: ignore
+        import tomli as tomllib  # type: ignore[import-untyped]
     except Exception:  # pragma: no cover - tomli missing
         tomllib = None  # type: ignore
 
